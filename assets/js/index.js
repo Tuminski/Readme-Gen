@@ -1,5 +1,6 @@
 // requiring inquirer and fs
 const inquirer = require("inquirer");
+const fs = require("fs");
 
 // questions for inquirer to ask
 const questions = [
@@ -23,8 +24,13 @@ const questions = [
 
 // inquirer asks questions
 inquirer.prompt(questions).then(function(answers){
-    console.log(answers);
-})
+    fs.writeFile("readme.md", JSON.stringify(answers), function(err){
+        if(err){
+            console.log(err);
+        }
+            console.log("Data entered!");
+    });
+});
 
 
 
