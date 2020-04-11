@@ -1,7 +1,8 @@
 function generateMarkdown(data) {
   return `
-# ${data.title}
-
+  # My GitHub username is: ${data.username}
+  # Project Title:  ${data.title}
+  # Project Description: ${data.description}
 `;
 }
 

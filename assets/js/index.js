@@ -1,6 +1,7 @@
-// requiring inquirer and fs
+// requiring inquirer, fs, and generateMarkdown
 const inquirer = require("inquirer");
 const fs = require("fs");
+const generateMarkdown = require("./utils/generateMarkdown");
 
 // questions for inquirer to ask
 const questions = [
@@ -11,7 +12,7 @@ const questions = [
     }, 
     {
         type: "input",
-        name: "projectTitle",
+        name: "title",
         message: "What is the name of your project?"
     },
     {
@@ -24,22 +25,33 @@ const questions = [
 
 // inquirer asks questions
 inquirer.prompt(questions).then(function(answers){
-    fs.writeFile("readme.md", JSON.stringify(answers), function(err){
+
+    // Need to do the API call to Github
+
+    // after the API call, Create the readme file
+
+    // write data to readme.md
+    writeToFile("readme.md", generateMarkdown(answers))
+})
+ 
+
+
+
+
+
+// =================== Provided functions ======================
+
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, function(err){
         if(err){
             console.log(err);
         }
             console.log("Data entered!");
+            // console.log(typeof data);
     });
-});
-
-
-
-
-
-// =========================================
-
-function writeToFile(fileName, data) {
 }
+
+
 
 function init() {
 
