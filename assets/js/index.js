@@ -20,6 +20,16 @@ const questions = [
         name: "description",
         message:  "Please provide a brief description of your project."
     },
+    {
+        type: "input",
+        name: "installation",
+        message:  "What do you need to install in order for your application to work?"
+    },
+    {
+        type: "input",
+        name: "usage",
+        message:  "How do you use your application?"
+    },
 ];
 
 
@@ -47,7 +57,7 @@ function writeToFile(fileName, data) {
             console.log(err);
         }
             console.log("Data entered!");
-            // console.log(typeof data);
+            console.log(data);
     });
 }
 
