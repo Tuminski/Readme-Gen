@@ -1,9 +1,9 @@
 function generateMarkdown(data) {
   return `
   # My GitHub username is: ${data.username}
-  # GitHub image goes here:  image
-  # GitHub user email goes here:  email
   # Project Title:  ${data.title}
+  # My image: ${data.image}
+  # Github email: ${data.email}
   # Project Description: ${data.description}
   # Table of Contents:  Table of contents will go here.
   # Installation: ${data.installation}

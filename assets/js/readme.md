@@ -1,12 +1,12 @@
 
-  # My GitHub username is: Barley
-  # GitHub image goes here:  image
-  # GitHub user email goes here:  email
+  # My GitHub username is: guillermo-martin
   # Project Title:  Onward
+  # My image: https://avatars3.githubusercontent.com/u/57199674?v=4
+  # Github email: null
   # Project Description: I go on an adventure
   # Table of Contents:  Table of contents will go here.
-  # Installation: My van and a magic wand
-  # Usage:  Through the computer
+  # Installation: Disney+
+  # Usage:  Through a streaming service
 
   # License will go here
 
