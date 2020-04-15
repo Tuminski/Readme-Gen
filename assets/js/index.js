@@ -3,6 +3,7 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 const axios = require("axios");
+const api = require("./utils/api")
 
 // using a token to get user email if it's null:  https://stackoverflow.com/questions/44078900/github-api-fetching-user-email/44087860#44087860
 // token removed for security reasons
@@ -80,18 +81,22 @@ async function combinedData() {
         });
 
         // use username from above to make an axios call to get user's image
-        await axios
-            .get(`https://api.github.com/users/${username}`)
-            .then(function(res){
-                return gitHubImage = res.data.avatar_url; 
-            });
+        // await axios
+        //     .get(`https://api.github.com/users/${username}`)
+        //     .then(function(res){
+        //         return gitHubImage = res.data.avatar_url; 
+        //     });
+
+
+        // after requiring api
+        await api.getUser(username);
 
         // use username from above to make an axios call to get a user's email
-        await axios
-            .get(`https://api.github.com/users/${username}`)
-            .then(function(res){
-                return gitHubEmail = res.data.email;
-            });
+        // await axios
+        //     .get(`https://api.github.com/users/${username}`)
+        //     .then(function(res){
+        //         return gitHubEmail = res.data.email;
+        //     });
 
         // ask user about their project
         await inquirer.prompt(questions).then(function(response){
