@@ -4,6 +4,11 @@ const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 const axios = require("axios");
 
+// using a token to get user email if it's null:  https://stackoverflow.com/questions/44078900/github-api-fetching-user-email/44087860#44087860
+const token = {
+    headers: {'Authorization': 'token 49c7784138072a615130dfb55aa9d30f16fef564'}
+  }
+
 // github question for inquirer to ask
 const gitHubQuestion = [
     {
@@ -35,6 +40,32 @@ const questions = [
         name: "usage",
         message:  "How do you use your application?"
     },
+    {
+        type: "input",
+        name: "tests",
+        message:  "How would you run tests on this project?"
+    },
+    {
+        type: "list",
+        name: "license",
+        message: "What type of license would you like?",
+        choices: [
+            "Apache License 2.0",
+            "GNU GPLv3",
+            "MIT",
+            "ISC",
+            "None"
+        ]
+    },
+    {
+        type: "list",
+        name: "contributors",
+        message: "What you like other developers to contribute to your project?",
+        choices: [
+            "Yes",
+            "No"
+        ]
+    }
 ];
 
 
@@ -53,7 +84,7 @@ async function combinedData() {
             return username = response.username; // <------ this is a string
         });
         
-        // console.log(username);
+        // DELETE console.log(username);
 
         // use username from above to make an axios call to get user's image
         await axios
@@ -64,18 +95,19 @@ async function combinedData() {
                 return gitHubImage = res.data.avatar_url; // <-----this is a string
             });
 
-        // console.log(gitHubImage);
+        // DELETE console.log(gitHubImage);
 
         // use username from above to make an axios call to get a user's email
         await axios
-            .get(`https://api.github.com/users/${username}`)
+            .get(`https://api.github.com/users/${username}`, token)
             .then(function(res){
                 // console.log(res.data.avatar_url);
                 // console.log(res.data.email);
+                // console.log(res.data);
                 return gitHubEmail = res.data.email;  // <------ this is a string
             });
 
-        // console.log(gitHubEmail);  
+        // DELETE console.log(gitHubEmail);  
 
         // ask user about their project
         await inquirer.prompt(questions).then(function(response){
@@ -83,16 +115,39 @@ async function combinedData() {
             return responses = response;  // <------- response is an object with the answers from inquirer
         });
         
-        // console.log(typeof responses);  // <------- this is an object
+        // DELETE console.log(typeof responses);  // <------- this is an object
 
-        // console.log(gitHubImage);
-        // console.log(gitHubEmail);
-        // console.log(responses);
+        // DELETE console.log(gitHubImage);
+        // DELETE console.log(gitHubEmail);
+        // DELETE console.log(responses);
 
         // add username, gitHubImage, and gitHubEmail as objects into the responses object
         responses.username = username;
         responses.image = gitHubImage;
         responses.email = gitHubEmail;
+
+        // DELETE console.log(responses);
+
+        // check for which license the user picked
+        if(responses.license === "Apache License 2.0"){
+            responses.license = apache;
+        } else if(responses.license === "GNU GPLv3"){
+            responses.license = gnu;
+        } else if(responses.license === "MIT"){
+            responses.license = mit;
+        } else if(responses.license === "ISC"){
+            responses.license = isc;
+        } else {
+            responses.license = "This project is currently not licensed."
+        }
+
+        // check to see if user wants contributors
+        if(responses.contributors === "Yes"){
+            responses.contributors = yesContributors;
+        } else {
+            responses.contributors = noContributors;
+        }
+
         console.log(responses);
 
         // write data to readme using generateMarkdown
@@ -126,6 +181,17 @@ function init() {
 
 init();
 
+
+
+// licenses
+const apache = "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).";
+const gnu = "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).";
+const mit = "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).";
+const isc = "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).";
+
+// contributors
+const yesContributors = "If you would like to contribute to this project, please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) guidelines."
+const noContributors = "This project is currently not accepting any contributions."
 
 
 
