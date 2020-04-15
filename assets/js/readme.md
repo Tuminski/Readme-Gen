@@ -13,16 +13,16 @@
   * [Questions](#questions)
 
   # Project Description
-  Nullam vehicula ipsum a arcu cursus. Rhoncus aenean vel elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Vel pharetra vel turpis nunc eget lorem dolor.
+  Neque viverra justo nec ultrices dui sapien eget mi. Id volutpat lacus laoreet non curabitur. Interdum velit euismod in pellentesque massa placerat. Fermentum dui faucibus in ornare quam. Adipiscing elit ut aliquam purus sit.
   
   # Installation
-  Consectetur purus ut faucibus pulvinar elementum integer enim.
+  Purus sit amet luctus venenatis lectus magna fringilla urna.
 
   # Usage
-  Consequat nisl vel pretium lectus quam. Non sodales neque sodales ut etiam sit amet nisl. Quis blandit turpis cursus in hac habitasse platea dictumst.
+  Gravida rutrum quisque non tellus orci ac auctor augue mauris. Odio eu feugiat pretium nibh ipsum consequat. Aliquam id diam maecenas ultricies.
 
   # Tests
-  Integer enim neque volutpat ac tincidunt vitae. Tortor vitae purus faucibus ornare. Interdum velit euismod in pellentesque massa placerat duis ultricies lacus. 
+  Suspendisse potenti nullam ac tortor vitae. Ornare massa eget egestas purus viverra accumsan in nisl. Ipsum nunc aliquet bibendum enim facilisis gravida neque convallis a.
 
   # License
   Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).
@@ -33,6 +33,6 @@
   # Questions
   If you have any questions, please contact the project owner by clicking on the email listed below.
   ![user image](https://avatars3.githubusercontent.com/u/57199674?v=4)
-  #### [gscalica@gmail.com](mailto:gscalica@gmail.com)
+  #### This user's email is private.
 
 

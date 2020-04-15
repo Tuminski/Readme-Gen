@@ -5,9 +5,10 @@ const generateMarkdown = require("./utils/generateMarkdown");
 const axios = require("axios");
 
 // using a token to get user email if it's null:  https://stackoverflow.com/questions/44078900/github-api-fetching-user-email/44087860#44087860
-const token = {
-    headers: {'Authorization': 'token 49c7784138072a615130dfb55aa9d30f16fef564'}
-  }
+// token removed for security reasons
+// const token = {
+//     headers: {'Authorization': 'token'}
+// }
 
 // github question for inquirer to ask
 const gitHubQuestion = [
@@ -69,64 +70,38 @@ const questions = [
 ];
 
 
-// call combinedData function when you run node index.js
-combinedData();
-
-
 // async function to combine all data from the inquirer prompts
 async function combinedData() {
     try {
 
         // ask user for their github username
         await inquirer.prompt(gitHubQuestion).then(function(response){
-            // console.log(response);   // <----- console.logs an object
-            // console.log(response.username);
-            return username = response.username; // <------ this is a string
+            return username = response.username;
         });
-        
-        // DELETE console.log(username);
 
         // use username from above to make an axios call to get user's image
         await axios
             .get(`https://api.github.com/users/${username}`)
             .then(function(res){
-                // console.log(res.data.avatar_url);
-                // console.log(res.data.email);
-                return gitHubImage = res.data.avatar_url; // <-----this is a string
+                return gitHubImage = res.data.avatar_url; 
             });
-
-        // DELETE console.log(gitHubImage);
 
         // use username from above to make an axios call to get a user's email
         await axios
-            .get(`https://api.github.com/users/${username}`, token)
+            .get(`https://api.github.com/users/${username}`)
             .then(function(res){
-                // console.log(res.data.avatar_url);
-                // console.log(res.data.email);
-                // console.log(res.data);
-                return gitHubEmail = res.data.email;  // <------ this is a string
+                return gitHubEmail = res.data.email;
             });
-
-        // DELETE console.log(gitHubEmail);  
 
         // ask user about their project
         await inquirer.prompt(questions).then(function(response){
-            //console.log(response);
-            return responses = response;  // <------- response is an object with the answers from inquirer
+            return responses = response;
         });
-        
-        // DELETE console.log(typeof responses);  // <------- this is an object
-
-        // DELETE console.log(gitHubImage);
-        // DELETE console.log(gitHubEmail);
-        // DELETE console.log(responses);
 
         // add username, gitHubImage, and gitHubEmail as objects into the responses object
         responses.username = username;
         responses.image = gitHubImage;
         responses.email = gitHubEmail;
-
-        // DELETE console.log(responses);
 
         // check for which license the user picked
         if(responses.license === "Apache License 2.0"){
@@ -148,7 +123,7 @@ async function combinedData() {
             responses.contributors = noContributors;
         }
 
-        console.log(responses);
+        // console.log(responses);
 
         // write data to readme using generateMarkdown
         writeToFile("readme.md", generateMarkdown(responses));
@@ -158,7 +133,8 @@ async function combinedData() {
     }
 }
 
-
+// call combinedData function when you run node index.js
+combinedData();
 
 
 // =================== PROVIDED FUNCTIONS ======================
@@ -169,10 +145,8 @@ function writeToFile(fileName, data) {
             console.log(err);
         }
             console.log("Data entered!");
-            // console.log(data);
     });
 }
-
 
 
 function init() {
@@ -192,58 +166,3 @@ const isc = "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html
 // contributors
 const yesContributors = "If you would like to contribute to this project, please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) guidelines."
 const noContributors = "This project is currently not accepting any contributions."
-
-
-
-// ============= NOTES ============================
-
-// ================ WORKING CODE FOR INQUIRER GITHUB INFO ====================
-
-// github questions for inquirer to ask
-// const gitHubQuestion = [
-//     {
-//         type: "input",
-//         name: "username",
-//         message: "What is your GitHub username?"
-//     }
-// ];
-
-
-// inquirer asks github question
-// inquirer.prompt(gitHubQuestion).then(function(response){
-//     const queryUrl = `https://api.github.com/users/${response.username}`;
-
-//     axios
-//         .get(queryUrl)
-//         .then(function(res){
-            
-//             // write the image to the readme file
-//             writeToFile("readme.md", generateMarkdown(res));
-//         });
-
-// })
-
-// =============================================================================
-
-
-// =================== WORKING CODE FOR INQUIRER PROJECT INFO ==================
-
-// inquirer asks project questions
-// inquirer.prompt(questions).then(function(response){
-
-
-
-// // //     // Need to do the API call to Github
-
-// // //     // after the API call, Create the readme file
-
-        
-//         console.log(response);
-// // //     // write data to readme.md
-//         writeToFile("readme.md", generateMarkdown(response));
-         
-
-
-// });
-
-// ==============================================================================
