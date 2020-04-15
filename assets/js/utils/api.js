@@ -11,11 +11,11 @@ const api = {
       });
 
     await axios
-    .get(queryUrl)
-    .then(function(res){
-      return gitHubEmail = res.data.email; 
-    });
-}
+      .get(queryUrl)
+      .then(function(res){
+        return gitHubEmail = res.data.email; 
+      });
+  }
 };
 
 module.exports = api;

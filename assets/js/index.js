@@ -80,23 +80,8 @@ async function combinedData() {
             return username = response.username;
         });
 
-        // use username from above to make an axios call to get user's image
-        // await axios
-        //     .get(`https://api.github.com/users/${username}`)
-        //     .then(function(res){
-        //         return gitHubImage = res.data.avatar_url; 
-        //     });
-
-
-        // after requiring api
+        // use username from above to make an axios call to get user's image and email
         await api.getUser(username);
-
-        // use username from above to make an axios call to get a user's email
-        // await axios
-        //     .get(`https://api.github.com/users/${username}`)
-        //     .then(function(res){
-        //         return gitHubEmail = res.data.email;
-        //     });
 
         // ask user about their project
         await inquirer.prompt(questions).then(function(response){
