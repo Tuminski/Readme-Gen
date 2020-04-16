@@ -1,4 +1,11 @@
 const axios = require("axios");
+require('dotenv').config()
+
+
+const token = {
+  headers: {'Authorization': 'process.env.DB_API'}
+}
+
 
 const api = {
   async getUser(username) {
@@ -11,7 +18,7 @@ const api = {
       });
 
     await axios
-      .get(queryUrl)
+      .get(queryUrl, token)
       .then(function(res){
         return gitHubEmail = res.data.email; 
       });

@@ -3,13 +3,8 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const generateMarkdown = require("./utils/generateMarkdown");
 const axios = require("axios");
-const api = require("./utils/api")
+const api = require("./utils/api");
 
-// using a token to get user email if it's null:  https://stackoverflow.com/questions/44078900/github-api-fetching-user-email/44087860#44087860
-// token removed for security reasons
-// const token = {
-//     headers: {'Authorization': 'token'}
-// }
 
 // github question for inquirer to ask
 const gitHubQuestion = [
@@ -19,6 +14,7 @@ const gitHubQuestion = [
         message: "What is your GitHub username?"
     }
 ];
+
 
 // project questions for inquirer to ask
 const questions = [
@@ -62,7 +58,7 @@ const questions = [
     {
         type: "list",
         name: "contributors",
-        message: "What you like other developers to contribute to your project?",
+        message: "Would you like other developers to contribute to your project?",
         choices: [
             "Yes",
             "No"
