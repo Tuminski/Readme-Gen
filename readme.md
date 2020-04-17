@@ -22,8 +22,8 @@ I learned more about using packages from npm, using an async function, and modul
 ## Functionality Demostration
 Application Demonstration  
 
-![application demo](./images/readme_Demo.gif)
+![application demo](./assets/images/readme_Demo.gif)
 
 Readme Output  
 
-![readme screenshot](./images/readme_screenshot.png)
+![readme screenshot](./assets/images/readme_screenshot.png)
