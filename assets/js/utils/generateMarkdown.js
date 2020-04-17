@@ -32,7 +32,8 @@ function generateMarkdown(data) {
   ${data.contributors}
 
   # Questions
-  If you have any questions, please contact the project owner by clicking on the email listed below.
+  If you have any questions, please contact the project owner by clicking on the email listed below.  
+  
   ![user image](${data.image})
   #### ${data.email !== null ? "[" + data.email + "](mailto:" + data.email + ")" : "This user's email is private."}
 

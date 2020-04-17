@@ -1,9 +1,18 @@
-// requiring inquirer, fs, generateMarkdown, and axios
-const inquirer = require("inquirer");
-const fs = require("fs");
-const generateMarkdown = require("./utils/generateMarkdown");
-const axios = require("axios");
-const api = require("./utils/api");
+// requiring inquirer, fs, generateMarkdown, and api
+const inquirer          = require("inquirer");
+const fs                = require("fs");
+const generateMarkdown  = require("./utils/generateMarkdown");
+const api               = require("./utils/api");
+
+// licenses
+const apache = "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).";
+const gnu    = "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).";
+const mit    = "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).";
+const isc    = "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).";
+
+// contributors
+const yesContributors = "If you would like to contribute to this project, please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) guidelines."
+const noContributors  = "This project is currently not accepting any contributions."
 
 
 // github question for inquirer to ask
@@ -109,8 +118,6 @@ async function combinedData() {
             responses.contributors = noContributors;
         }
 
-        // console.log(responses);
-
         // write data to readme using generateMarkdown
         writeToFile("readme.md", generateMarkdown(responses));
 
@@ -133,22 +140,3 @@ function writeToFile(fileName, data) {
             console.log("Data entered!");
     });
 }
-
-
-function init() {
-
-}
-
-init();
-
-
-
-// licenses
-const apache = "Licensed under the [Apache License](https://spdx.org/licenses/Apache-2.0.html).";
-const gnu = "Licensed under the [GNU GPLv3 License](https://spdx.org/licenses/GPL-3.0-or-later.html).";
-const mit = "Licensed under the [MIT License](https://spdx.org/licenses/MIT.html).";
-const isc = "Licensed under the [ISC License](https://spdx.org/licenses/ISC.html).";
-
-// contributors
-const yesContributors = "If you would like to contribute to this project, please follow the [Contributor Covenant Code of Conduct](https://www.contributor-covenant.org/version/2/0/code_of_conduct/) guidelines."
-const noContributors = "This project is currently not accepting any contributions."

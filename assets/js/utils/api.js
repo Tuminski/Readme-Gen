@@ -1,12 +1,12 @@
 const axios = require("axios");
 require('dotenv').config()
 
-
+// token
 const token = {
   headers: {'Authorization': 'process.env.DB_API'}
 }
 
-
+// axios call to github
 const api = {
   async getUser(username) {
     const queryUrl = `https://api.github.com/users/${username}`;
