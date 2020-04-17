@@ -20,7 +20,7 @@ Building this application was a challenge.  One of the challenging parts of buil
 call using Axios.  Another challenge was being able to combine data from two different sources for use in generating the readme file.  Through this experience,
 I learned more about using packages from npm, using an async function, and modularizing my application.
 
-## Functionality Demostration
+## Functionality Demonstration
 Application Demonstration  
 
 ![application demo](./assets/images/readme_Demo.gif)
