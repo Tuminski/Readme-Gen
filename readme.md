@@ -21,10 +21,8 @@ call using Axios.  Another challenge was being able to combine data from two dif
 I learned more about using packages from npm, using an async function, and modularizing my application.
 
 ## Functionality Demonstration
-Application Demonstration  
 
-![application demo](./assets/images/readme_generator.gif)  
-[Video Demonstration](https://drive.google.com/file/d/1gkDK0wx3F0ep0z93pYrUuNgXxVaYC1_j/view)
+Click [here](https://drive.google.com/file/d/1gkDK0wx3F0ep0z93pYrUuNgXxVaYC1_j/view) for a video demonstration of the application's functionality.
 
 Readme Output  
 
