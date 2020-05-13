@@ -23,7 +23,7 @@ I learned more about using packages from npm, using an async function, and modul
 ## Functionality Demonstration
 Application Demonstration  
 
-![application demo](./assets/images/readme_Demo.gif)
+![application demo](./assets/images/readme_generator.gif)
 
 Readme Output  
 
