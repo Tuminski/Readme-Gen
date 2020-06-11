@@ -1,4 +1,4 @@
-# Homework: Good Readme Generator
+# Good Readme Generator
 
 ## Description
 The following application is a command-line application that will create a "readme" file based off user input.  In order to use the application, a user
