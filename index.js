@@ -95,7 +95,7 @@ async function combinedData() {
 
         // add username, gitHubImage, and gitHubEmail as objects into the responses object
         responses.username = username;
-        responses.image = gitHubImage;
+        // responses.image = gitHubImage;
         responses.email = gitHubEmail;
 
         // check for which license the user picked
